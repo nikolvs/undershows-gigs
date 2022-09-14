@@ -1,9 +1,9 @@
 /** @type {import('astro-i18next').AstroI18nextConfig} */
 export default {
-  defaultLanguage: "pt-BR",
+  defaultLanguage: process.env.DEFAULT_LOCALE,
   supportedLanguages: ["pt-BR", "en"],
   i18next: {
-    debug: true, // convenient during development to check for missing keys
+    debug: false,
     initImmediate: false,
     backend: {
       loadPath: "./src/locales/{{lng}}.json",

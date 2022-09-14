@@ -1,0 +1,14 @@
+{
+  "code": "SP",
+  "name": "São Paulo",
+  "gigs": [
+    {
+      "city": "Campinas",
+      "artists": ["Institution", "Mee"],
+      "date": "17/09/2022 18:00",
+      "venue": "Casa Rock",
+      "address": "Rua 7 de Setembro, 553 - Vila Industrial",
+      "ticket_price": 20
+    }
+  ]
+}

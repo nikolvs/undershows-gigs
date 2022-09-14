@@ -3,9 +3,12 @@ import { defineConfig } from "astro/config";
 import astroI18next from "astro-i18next";
 import sitemap from "@astrojs/sitemap";
 
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://undershows.com.br',
+  site: process.env.SITE_URL,
   integrations: [
     astroI18next(),
     sitemap({
@@ -13,10 +16,10 @@ export default defineConfig({
       lastmod: new Date(),
       priority: 0.7,
       i18n: {
-        defaultLocale: 'pt-br',
+        defaultLocale: process.env.DEFAULT_LOCALE,
         locales: {
-          en: 'en',
-          'pt-br': 'pt-BR'
+          'pt-BR': 'pt-BR',
+          en: 'en'
         }
       }
     })

@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/sitemap': ^1.0.0
   astro: ^1.2.3
   astro-i18next: 1.0.0-beta.9
+  dotenv: ^16.0.2
   i18next-fs-backend: ^1.1.5
 
 dependencies:
@@ -11,6 +12,9 @@ dependencies:
   astro: 1.2.3
   astro-i18next: 1.0.0-beta.9_astro@1.2.3
   i18next-fs-backend: 1.1.5
+
+devDependencies:
+  dotenv: 16.0.2
 
 packages:
 
@@ -993,6 +997,11 @@ packages:
   /dlv/1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
     dev: false
+
+  /dotenv/16.0.2:
+    resolution: {integrity: sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==}
+    engines: {node: '>=12'}
+    dev: true
 
   /dset/3.1.2:
     resolution: {integrity: sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==}
