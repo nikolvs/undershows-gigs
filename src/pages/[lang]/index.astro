@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { t, changeLanguage } from "i18next";
+
+export interface Props {
+  locale: string;
+}
+
+export function getStaticPaths() {
+  return ["pt-BR", "en"].map((locale) => ({
+    props: { locale },
+    params: { lang: locale.toLowerCase() },
+  }));
+}
+
+const { locale } = Astro.props;
+changeLanguage(locale);
+---
+
+<Layout title="Welcome to Astro.">
+  {t("cities")}
+</Layout>
