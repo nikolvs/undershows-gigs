@@ -3,7 +3,7 @@ import i18next from "i18next";
 import { changeLanguage } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 
-changeLanguage(import.meta.env.DEFAULT_LOCALE);
+changeLanguage(Astro.params.lang ?? import.meta.env.DEFAULT_LOCALE);
 
 export interface Props {
   title?: string;

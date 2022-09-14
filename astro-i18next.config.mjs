@@ -1,7 +1,9 @@
+import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from './src/app.config.mjs';
+
 /** @type {import('astro-i18next').AstroI18nextConfig} */
 export default {
-  defaultLanguage: process.env.DEFAULT_LOCALE,
-  supportedLanguages: ["pt-BR", "en"],
+  defaultLanguage: DEFAULT_LOCALE,
+  supportedLanguages: SUPPORTED_LANGUAGES,
   i18next: {
     debug: false,
     initImmediate: false,

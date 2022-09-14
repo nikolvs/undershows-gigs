@@ -1,0 +1,39 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { SUPPORTED_LANGUAGES, DEFAULT_LOCALE } from "@/app.config.mjs";
+import { Debug } from "astro/components";
+import { t } from "i18next";
+
+export async function getStaticPaths() {
+  const states = await Astro.glob("../../data/*.json");
+  return SUPPORTED_LANGUAGES.reduce((paths, lang) => {
+    if (lang === DEFAULT_LOCALE) {
+      return paths;
+    }
+
+    paths.push(
+      ...states.map(({ code, name, gigs }) => ({
+        params: {
+          lang: lang.toLowerCase(),
+          state: code.toLowerCase(),
+        },
+        props: { name, gigs },
+      }))
+    );
+
+    return paths;
+  }, []);
+}
+
+export interface Props {
+  name: string;
+  gigs: any[];
+}
+
+const { name, gigs } = Astro.props;
+---
+
+<Layout title={name}>
+  {t("states")} - {name}
+  <Debug {gigs} />
+</Layout>

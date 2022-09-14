@@ -1,10 +1,8 @@
 import { defineConfig } from "astro/config";
+import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from './src/app.config';
 
 import astroI18next from "astro-i18next";
 import sitemap from "@astrojs/sitemap";
-
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,11 +14,11 @@ export default defineConfig({
       lastmod: new Date(),
       priority: 0.7,
       i18n: {
-        defaultLocale: process.env.DEFAULT_LOCALE,
-        locales: {
-          'pt-BR': 'pt-BR',
-          en: 'en'
-        }
+        defaultLocale: DEFAULT_LOCALE,
+        locales: SUPPORTED_LANGUAGES.reduce((locales, lang) => ({
+          ...locales,
+          [lang]: lang.toLowerCase()
+        }), {})
       }
     })
   ]
