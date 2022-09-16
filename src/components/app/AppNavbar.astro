@@ -1,0 +1,16 @@
+---
+import { LanguageSelector } from "astro-i18next/components";
+import { Link } from "@/components/core";
+import { SITE_TITLE } from "@/app.config.mjs";
+---
+
+<div class="navbar bg-gray-900">
+  <div class="flex-1">
+    <Link to="/" class="btn btn-ghost normal-case text-xl text-white">
+      {SITE_TITLE}
+    </Link>
+  </div>
+  <div class="flex-none">
+    <LanguageSelector showFlag={true} />
+  </div>
+</div>

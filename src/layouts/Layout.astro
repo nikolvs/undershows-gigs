@@ -3,6 +3,7 @@ import i18next from "i18next";
 import { changeLanguage } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 import { SITE_TITLE, DEFAULT_LOCALE } from "@/app.config.mjs";
+import { AppNavbar } from "@/components/app";
 
 changeLanguage(Astro.params.lang ?? DEFAULT_LOCALE);
 
@@ -24,6 +25,7 @@ const { title } = Astro.props;
     <HeadHrefLangs />
   </head>
   <body>
+    <AppNavbar />
     <slot />
   </body>
 </html>

@@ -1,0 +1,13 @@
+---
+import { localizePath } from "astro-i18next";
+
+export type Props = astroHTML.JSX.AnchorHTMLAttributes & {
+  to: string;
+};
+
+const { to, ...attrs } = Astro.props;
+---
+
+<a href={localizePath(to)} {...attrs}>
+  <slot />
+</a>

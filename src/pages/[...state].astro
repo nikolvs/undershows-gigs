@@ -1,0 +1,34 @@
+---
+import { Debug } from "astro/components";
+import { t } from "i18next";
+import { DEFAULT_STATE } from "@/app.config.mjs";
+import Layout from "@/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const states = await Astro.glob("../data/*.json");
+  const defaultState = states.find((state) => state.code === DEFAULT_STATE);
+
+  return [
+    {
+      params: { state: undefined },
+      props: defaultState,
+    },
+    ...states.map(({ code, name, gigs }) => ({
+      params: { state: code.toLowerCase() },
+      props: { name, gigs },
+    })),
+  ];
+}
+
+export interface Props {
+  name: string;
+  gigs: any[];
+}
+
+const { name, gigs } = Astro.props;
+---
+
+<Layout title={name}>
+  {t("states")} - {name}
+  <Debug {gigs} />
+</Layout>
