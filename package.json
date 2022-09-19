@@ -1,24 +1,26 @@
 {
-  "name": "@example/basics",
+  "name": "undershows",
   "type": "module",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^1.0.1",
     "astro": "^1.2.3",
     "astro-i18next": "1.0.0-beta.9",
     "autoprefixer": "^10.0.2",
     "daisyui": "^2.27.0",
     "i18next-fs-backend": "^1.1.5",
-    "postcss": ">=8.3.3 <9.0.0"
+    "postcss": ">=8.3.3 <9.0.0",
+    "svelte": "^3.46.4"
   },
   "devDependencies": {
     "dotenv": "^16.0.2"

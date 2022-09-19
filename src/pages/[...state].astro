@@ -1,34 +1,51 @@
 ---
 import { Debug } from "astro/components";
-import { t } from "i18next";
 import { DEFAULT_STATE } from "@/app.config.mjs";
 import Layout from "@/layouts/Layout.astro";
+import { StateSelector } from "@/components/state";
+import { localizePath } from "astro-i18next";
+
+export type Props = {
+  name: string;
+  gigs: any[];
+  states: any[];
+};
+
+type State = {
+  code: string;
+  name: string;
+  path: string;
+  gigs: any[];
+};
 
 export async function getStaticPaths() {
-  const states = await Astro.glob("../data/*.json");
+  const states: State[] = (await Astro.glob("../data/gigs/*.json")).map(
+    (state) =>
+      ({
+        ...state,
+        path: localizePath(state.code),
+      } as State)
+  );
+
   const defaultState = states.find((state) => state.code === DEFAULT_STATE);
 
   return [
     {
       params: { state: undefined },
-      props: defaultState,
+      props: { states, ...defaultState },
     },
     ...states.map(({ code, name, gigs }) => ({
-      params: { state: code.toLowerCase() },
-      props: { name, gigs },
+      params: { state: code },
+      props: { states, name, gigs },
     })),
   ];
 }
 
-export interface Props {
-  name: string;
-  gigs: any[];
-}
-
-const { name, gigs } = Astro.props;
+const { states, name, gigs } = Astro.props;
+const state = (Astro.params.state as string) ?? DEFAULT_STATE;
 ---
 
 <Layout title={name}>
-  {t("states")} - {name}
+  <StateSelector client:idle states={states} selectedState={state} />
   <Debug {gigs} />
 </Layout>

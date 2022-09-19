@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from './src/app.config.mjs';
+import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from "./src/app.config.mjs";
 
 /** @type {import('astro-i18next').AstroI18nextConfig} */
 export default {
@@ -8,7 +8,7 @@ export default {
     debug: false,
     initImmediate: false,
     backend: {
-      loadPath: "./src/locales/{{lng}}.json",
+      loadPath: "./src/data/locales/{{lng}}.json",
     },
   },
   i18nextPlugins: { fsBackend: "i18next-fs-backend" },

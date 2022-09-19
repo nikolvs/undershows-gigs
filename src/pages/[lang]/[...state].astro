@@ -8,11 +8,24 @@ import {
 } from "@/app.config.mjs";
 import Layout from "@/layouts/Layout.astro";
 
+export type Props = {
+  name: string;
+  gigs: any[];
+};
+
+type StaticPath = {
+  props: Props;
+  params: {
+    state?: string;
+    lang: string;
+  };
+};
+
 export async function getStaticPaths() {
-  const states = await Astro.glob("../../data/*.json");
+  const states = await Astro.glob("../../data/gigs/*.json");
   const defaultState = states.find((state) => state.code === DEFAULT_STATE);
 
-  return SUPPORTED_LANGUAGES.reduce((paths, lang) => {
+  return SUPPORTED_LANGUAGES.reduce((paths: StaticPath[], lang: string) => {
     // Don't add default locale paths.
     if (lang === DEFAULT_LOCALE) {
       return paths;
@@ -23,26 +36,21 @@ export async function getStaticPaths() {
         state: undefined,
         lang: lang.toLocaleLowerCase(),
       },
-      props: defaultState,
+      props: defaultState as Props,
     });
 
     paths.push(
       ...states.map(({ code, name, gigs }) => ({
         params: {
-          state: code.toLowerCase(),
-          lang: lang.toLowerCase(),
+          lang,
+          state: code,
         },
         props: { name, gigs },
       }))
     );
 
     return paths;
-  }, []);
-}
-
-export interface Props {
-  name: string;
-  gigs: any[];
+  }, [] as StaticPath[]);
 }
 
 const { name, gigs } = Astro.props;
