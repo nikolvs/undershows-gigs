@@ -2,7 +2,6 @@
 import { Debug } from "astro/components";
 import { DEFAULT_STATE } from "@/app.config.mjs";
 import Layout from "@/layouts/Layout.astro";
-import { StateSelector } from "@/components/state";
 import { localizePath } from "astro-i18next";
 
 export type Props = {
@@ -42,10 +41,10 @@ export async function getStaticPaths() {
 }
 
 const { states, name, gigs } = Astro.props;
-const state = (Astro.params.state as string) ?? DEFAULT_STATE;
+const stateCode = (Astro.params.state as string) ?? DEFAULT_STATE;
+const selectedState = states.find((state) => state.code === stateCode);
 ---
 
-<Layout title={name}>
-  <StateSelector client:idle states={states} selectedState={state} />
+<Layout title={name} states={states} selectedState={selectedState}>
   <Debug {gigs} />
 </Layout>

@@ -1,6 +1,5 @@
 ---
 import { Debug } from "astro/components";
-import { t } from "i18next";
 import {
   SUPPORTED_LANGUAGES,
   DEFAULT_LOCALE,
@@ -11,6 +10,7 @@ import Layout from "@/layouts/Layout.astro";
 export type Props = {
   name: string;
   gigs: any[];
+  states: any[];
 };
 
 type StaticPath = {
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
         state: undefined,
         lang: lang.toLocaleLowerCase(),
       },
-      props: defaultState as Props,
+      props: { states, ...defaultState } as Props,
     });
 
     paths.push(
@@ -45,7 +45,7 @@ export async function getStaticPaths() {
           lang,
           state: code,
         },
-        props: { name, gigs },
+        props: { states, name, gigs },
       }))
     );
 
@@ -53,10 +53,11 @@ export async function getStaticPaths() {
   }, [] as StaticPath[]);
 }
 
-const { name, gigs } = Astro.props;
+const { states, name, gigs } = Astro.props;
+const stateCode = (Astro.params.state as string) ?? DEFAULT_STATE;
+const selectedState = states.find((state) => state.code === stateCode);
 ---
 
-<Layout title={name}>
-  {t("states")} - {name}
+<Layout title={name} states={states} selectedState={selectedState}>
   <Debug {gigs} />
 </Layout>

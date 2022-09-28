@@ -1,6 +1,8 @@
 {
   "code": "sp",
   "name": "São Paulo",
+  "region": "Sudeste",
+  "icon": "/images/icons/26-sao-paulo-square-rounded.svg",
   "gigs": [
     {
       "city": "Campinas",

@@ -1,5 +1,7 @@
 {
     "code": "rj",
     "name": "Rio de Janeiro",
+    "region": "Sudeste",
+    "icon": "/images/icons/20-rio-de-janeiro-square-rounded.svg",
     "gigs": []
 }

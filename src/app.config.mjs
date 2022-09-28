@@ -10,10 +10,10 @@ export const SITE_TITLE = process.env.SITE_TITLE ?? 'undershows';
 /**
  * Locale configuration.
  */
-export const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE ?? 'pt';
+export const DEFAULT_LOCALE = process.env.PUBLIC_DEFAULT_LOCALE ?? 'pt';
 export const SUPPORTED_LANGUAGES = ['pt', 'en'];
 
 /**
  * App configuration.
  */
-export const DEFAULT_STATE = process.env.DEFAULT_STATE ?? 'SP';
+export const DEFAULT_STATE = process.env.PUBLIC_DEFAULT_STATE ?? 'SP';

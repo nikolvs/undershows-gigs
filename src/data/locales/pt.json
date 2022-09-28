@@ -1,3 +1,3 @@
 {
-    "states": "Estados"
+    "state.selector.placeholder": "Exibindo shows em {{state}}"
 }
