@@ -62,7 +62,7 @@
   </div>
 
   <div
-    class="menu menu-compact bg-neutral rounded-b-lg p-4"
+    class="menu menu-compact w-full bg-neutral rounded-b-lg p-4"
     class:absolute={open}
     class:hidden={!open}
   >
@@ -71,7 +71,7 @@
         {#each regionSlice as region}
           <ul class="flex-1">
             <li class="menu-title">
-              <span>{region.name}</span>
+              <span>{t(region.name)}</span>
             </li>
             {#each region.states as state}
               <li>

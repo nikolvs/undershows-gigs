@@ -1,3 +1,8 @@
 {
-    "state.selector.placeholder": "Exibindo shows em {{state}}"
+    "state.selector.placeholder": "Exibindo shows em {{state}}",
+    "Centro-Oeste": "Centro-Oeste",
+    "Nordeste": "Nordeste",
+    "Norte": "Norte",
+    "Sudeste": "Sudeste",
+    "Sul": "Sul"
 }
