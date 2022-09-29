@@ -1,12 +1,10 @@
 ---
-import { Debug } from "astro/components";
-import { DEFAULT_STATE } from "@/app.config.mjs";
 import Layout from "@/layouts/Layout.astro";
+import { GigList } from "@/components/gig";
+import { DEFAULT_STATE } from "@/app.config.mjs";
 import { localizePath } from "astro-i18next";
 
 export type Props = {
-  name: string;
-  gigs: any[];
   states: any[];
 };
 
@@ -26,25 +24,27 @@ export async function getStaticPaths() {
       } as State)
   );
 
-  const defaultState = states.find((state) => state.code === DEFAULT_STATE);
-
   return [
     {
       params: { state: undefined },
-      props: { states, ...defaultState },
+      props: { states },
     },
-    ...states.map(({ code, name, gigs }) => ({
+    ...states.map(({ code }) => ({
       params: { state: code },
-      props: { states, name, gigs },
+      props: { states },
     })),
   ];
 }
 
-const { states, name, gigs } = Astro.props;
+const { states } = Astro.props;
 const stateCode = (Astro.params.state as string) ?? DEFAULT_STATE;
 const selectedState = states.find((state) => state.code === stateCode);
 ---
 
-<Layout title={name} states={states} selectedState={selectedState}>
-  <Debug {gigs} />
+<Layout
+  title={selectedState.name}
+  states={states}
+  selectedState={selectedState}
+>
+  <GigList client:idle state={selectedState} />
 </Layout>

@@ -62,7 +62,7 @@
   </div>
 
   <div
-    class="menu menu-compact w-full bg-neutral rounded-b-lg p-4"
+    class="menu menu-compact w-full bg-neutral rounded-b-lg p-4 z-10"
     class:absolute={open}
     class:hidden={!open}
   >

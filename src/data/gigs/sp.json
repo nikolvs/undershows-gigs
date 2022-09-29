@@ -10,7 +10,41 @@
       "date": "17/09/2022 18:00",
       "venue": "Casa Rock",
       "address": "Rua 7 de Setembro, 553 - Vila Industrial",
-      "ticket_price": 20
+      "ticket_price": 20,
+      "poster": "306768894_5431267326942932_7327264805328101954_n.jpeg"
+    },
+    {
+      "poster": "301180296_1719919548385025_216110057487708328_n.jpeg"
+    },
+    {
+      "poster": "306670857_1939299472926305_3797707325672499425_n.jpeg"
+    },
+    {
+      "city": "Campinas",
+      "artists": ["Institution", "Mee"],
+      "date": "17/09/2022 18:00",
+      "venue": "Casa Rock",
+      "address": "Rua 7 de Setembro, 553 - Vila Industrial",
+      "ticket_price": 20,
+      "poster": "306768894_5431267326942932_7327264805328101954_n.jpeg"
+    },
+    {
+      "poster": "301180296_1719919548385025_216110057487708328_n.jpeg"
+    },
+    {
+      "poster": "306670857_1939299472926305_3797707325672499425_n.jpeg"
+    },
+    {
+      "city": "Campinas",
+      "artists": ["Institution", "Mee"],
+      "date": "17/09/2022 18:00",
+      "venue": "Casa Rock",
+      "address": "Rua 7 de Setembro, 553 - Vila Industrial",
+      "ticket_price": 20,
+      "poster": "306768894_5431267326942932_7327264805328101954_n.jpeg"
+    },
+    {
+      "poster": "301180296_1719919548385025_216110057487708328_n.jpeg"
     }
   ]
 }

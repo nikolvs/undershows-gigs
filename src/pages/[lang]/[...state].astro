@@ -8,8 +8,6 @@ import {
 import Layout from "@/layouts/Layout.astro";
 
 export type Props = {
-  name: string;
-  gigs: any[];
   states: any[];
 };
 
@@ -23,7 +21,6 @@ type StaticPath = {
 
 export async function getStaticPaths() {
   const states = await Astro.glob("../../data/gigs/*.json");
-  const defaultState = states.find((state) => state.code === DEFAULT_STATE);
 
   return SUPPORTED_LANGUAGES.reduce((paths: StaticPath[], lang: string) => {
     // Don't add default locale paths.
@@ -36,16 +33,16 @@ export async function getStaticPaths() {
         state: undefined,
         lang: lang.toLocaleLowerCase(),
       },
-      props: { states, ...defaultState } as Props,
+      props: { states } as Props,
     });
 
     paths.push(
-      ...states.map(({ code, name, gigs }) => ({
+      ...states.map(({ code }) => ({
         params: {
           lang,
           state: code,
         },
-        props: { states, name, gigs },
+        props: { states },
       }))
     );
 
@@ -53,11 +50,15 @@ export async function getStaticPaths() {
   }, [] as StaticPath[]);
 }
 
-const { states, name, gigs } = Astro.props;
+const { states } = Astro.props;
 const stateCode = (Astro.params.state as string) ?? DEFAULT_STATE;
 const selectedState = states.find((state) => state.code === stateCode);
 ---
 
-<Layout title={name} states={states} selectedState={selectedState}>
-  <Debug {gigs} />
+<Layout
+  title={selectedState.name}
+  states={states}
+  selectedState={selectedState}
+>
+  <Debug {selectedState.gigs} />
 </Layout>
